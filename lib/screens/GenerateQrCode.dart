@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 import 'dart:typed_data';
 import 'package:qr_app/Colors.dart';
 import 'package:qr_app/componentes/appBar.dart';
 import 'package:qr_app/componentes/elevatedButton.dart';
+import 'package:qr_app/settings/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -40,11 +42,13 @@ class _GenrateQrcodeState extends State<GenrateQrcode> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
     return Scaffold(
-      backgroundColor: AppColor.backGroundColor,
+      backgroundColor:
+          isDarkMode ? AppColor.backGroundColor : AppColor.textFeaildColor,
       appBar: customAppBar(
         'Generate Qr Code',
-        AppColor.secondBackGroundColor,
+        isDarkMode ? AppColor.secondBackGroundColor : AppColor.textFeaildColor,
         context,
       ),
       body: SingleChildScrollView(
@@ -55,7 +59,9 @@ class _GenrateQrcodeState extends State<GenrateQrcode> {
             margin: EdgeInsets.only(bottom: 50),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
-              color: AppColor.secondBackGroundColor,
+              color: isDarkMode
+                  ? AppColor.secondBackGroundColor
+                  : AppColor.textFeaildColor,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_app/Colors.dart';
 import 'package:qr_app/componentes/appBar.dart';
+import 'package:qr_app/settings/provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanQrCode extends StatefulWidget {
@@ -51,10 +53,14 @@ class _ScanQrCodeState extends State<ScanQrCode> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.backGroundColor,
-        appBar: customAppBar('Scan Qr Code', AppColor.backGroundColor, context),
+        appBar: customAppBar(
+            'Scan Qr Code',
+            isDarkMode ? AppColor.backGroundColor : AppColor.textFeaildColor,
+            context),
         body: Stack(
           alignment: Alignment.center,
           children: [
@@ -102,6 +108,7 @@ class _ScanQrCodeState extends State<ScanQrCode> {
   }
 
   Widget buildResult(BuildContext context) {
+    bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
     return GestureDetector(
       onTap: () {
         copyCodeToClipboard(code, context);
@@ -118,7 +125,9 @@ class _ScanQrCodeState extends State<ScanQrCode> {
             code != null ? 'Copy' : 'Scan Code',
             style: GoogleFonts.inter(
               fontSize: 15,
-              color: AppColor.backGroundColor,
+              color: isDarkMode
+                  ? AppColor.backGroundColor
+                  : AppColor.textFeaildColor,
             ),
             textAlign: TextAlign.center,
             maxLines: 2,
