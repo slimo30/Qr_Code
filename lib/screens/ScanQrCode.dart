@@ -40,7 +40,8 @@ class _ScanQrCodeState extends State<ScanQrCode> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Text copied to clipboard: Result ${code.code}',
-                style: TextStyle(fontSize: 16, color: Colors.white)),
+                style:
+                    TextStyle(fontSize: 16, color: AppColor.textFeaildColor)),
             duration: Duration(seconds: 2),
           ),
         );
@@ -114,7 +115,7 @@ class _ScanQrCodeState extends State<ScanQrCode> {
           ),
           padding: EdgeInsets.all(12.0),
           child: Text(
-            code != null ? 'Copied' : 'Copy',
+            code != null ? 'Copy' : 'Scan Code',
             style: GoogleFonts.inter(
               fontSize: 15,
               color: AppColor.backGroundColor,

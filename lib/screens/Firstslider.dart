@@ -33,7 +33,7 @@ class Firstslide extends StatelessWidget {
                       style: GoogleFonts.inter(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
-                          color: Colors.black),
+                          color: AppColor.backGroundColor),
                     ).animate().fade(duration: 500.ms).scale(delay: 500.ms),
                     SizedBox(
                       height: 20,
@@ -43,7 +43,7 @@ class Firstslide extends StatelessWidget {
                       style: GoogleFonts.inter(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
-                          color: Colors.black),
+                          color: AppColor.backGroundColor),
                     ).animate().fade(duration: 500.ms).scale(delay: 500.ms),
                     SizedBox(
                       height: 120,

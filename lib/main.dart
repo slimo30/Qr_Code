@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:qr_app/screens/Firstslider.dart';
+import 'package:provider/provider.dart';
+import 'package:qr_app/Colors.dart';
+
 import 'package:qr_app/screens/Splash.dart';
+import 'package:qr_app/settings/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

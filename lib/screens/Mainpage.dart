@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_app/Colors.dart';
 import 'package:qr_app/componentes/componentes1.dart';
 import 'package:qr_app/screens/GenerateQrCode.dart';
-import 'package:qr_app/screens/scan.dart';
+import 'package:qr_app/screens/ScanQrCode.dart';
+import 'package:qr_app/settings/Settings.dart';
+import 'package:qr_app/settings/provider.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
     return SafeArea(
       child: Scaffold(
+        backgroundColor:
+            isDarkMode ? AppColor.backGroundColor : AppColor.textFeaildColor,
         body: WillPopScope(
           onWillPop: () async {
             return false;
           },
           child: Container(
-            color: AppColor.backGroundColor,
+            color: isDarkMode
+                ? AppColor.backGroundColor
+                : AppColor.textFeaildColor,
             width: double.infinity,
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -33,7 +41,7 @@ class MainPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MainPage(),
+                                builder: (context) => Settings(),
                               ),
                             );
                           },
@@ -51,7 +59,9 @@ class MainPage extends StatelessWidget {
                           ),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColor.secondBackGroundColor),
+                                isDarkMode
+                                    ? AppColor.backGroundColor
+                                    : AppColor.textFeaildColor),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
