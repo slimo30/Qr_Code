@@ -33,7 +33,6 @@ class _SplashState extends State<Splash> {
       backgroundColor: AppColor.backGroundColor,
       body: Center(
         child: Container(
-          margin: EdgeInsets.only(bottom: 50),
           child: Image(
             image: AssetImage(
               'images/qr.png',

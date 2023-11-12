@@ -38,6 +38,9 @@ dependencies:
   google_fonts: ^6.1.0
   flutter_animate: ^4.2.0+1
   qr_code_scanner: ^1.0.1
+  screenshot: ^2.1.0
+  permission_handler: ^11.0.1
+  image_gallery_saver: "^2.0.3"
 
 dev_dependencies:
   flutter_test:
