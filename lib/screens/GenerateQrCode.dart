@@ -29,11 +29,35 @@ class _GenrateQrcodeState extends State<GenrateQrcode> {
         final result = await ImageGallerySaver.saveImage(unit8list);
         if (result['isSuccess']) {
           print('image saved successfully');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Image saved successfully',
+                  style:
+                      TextStyle(fontSize: 16, color: AppColor.textFeaildColor)),
+              duration: Duration(seconds: 2),
+            ),
+          );
         } else {
           print('image not saved successfully ${result['error']}');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('image not saved successfully ${result['error']}',
+                  style:
+                      TextStyle(fontSize: 16, color: AppColor.textFeaildColor)),
+              duration: Duration(seconds: 2),
+            ),
+          );
         }
       } else {
         print('Permission to access denied');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Permission to access denied',
+                style:
+                    TextStyle(fontSize: 16, color: AppColor.textFeaildColor)),
+            duration: Duration(seconds: 2),
+          ),
+        );
       }
     }
   }
